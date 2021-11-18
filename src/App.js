@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import DirectoryList from "ui/components/DirectoryList";
 
 const fetchOffersList = async () => {

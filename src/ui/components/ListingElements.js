@@ -1,16 +1,29 @@
 import { useEffect } from "react";
+import usePagination from "../../customHooks/UsePagination";
 
 const ListingElements = ({ universities }) => {
     const [currentUniversities, setCurrentUniversities] = useState(
         universities,
     );
+    const {
+        next,
+        prev,
+        currentData,
+        currentPage,
+        maxPage,
+        isLast,
+        isFirst,
+    } = usePagination(currentUniversities, 10);
+
+    console.log(currentPage);
+    console.log(maxPage);
     const [filterUniversities, setFilterUniversities] = useState("");
     const [sortingElements, setSortingElements] = useState(null);
     useEffect(() => {
         console.log(filterUniversities);
         setSortingElements(null);
         if (filterUniversities) {
-            const regExpression = new RegExp(filterUniversities, "giu");
+            const regExpression = new RegExp(filterUniversities, "gi");
             setCurrentUniversities(
                 universities.filter(filterUniversities =>
                     regExpression.test(filterUniversities.name),
@@ -42,6 +55,7 @@ const ListingElements = ({ universities }) => {
             })();
         }
     }, [sortingElements]);
+
     return (
         <div>
             <div>
@@ -69,9 +83,17 @@ const ListingElements = ({ universities }) => {
                     </button>
                 </div>
             </div>
-            {currentUniversities.map(university => (
+            {currentData().map(university => (
                 <div key={university.name}>{university.name}</div>
             ))}
+            <div>
+                Pagination{" "}
+                <div>
+                    {!isFirst() && <button onClick={() => prev()}>Prev</button>}
+                    <span>{`${currentPage} of ${maxPage}`}</span>
+                    {!isLast() && <button onClick={() => next()}>Next</button>}
+                </div>
+            </div>
         </div>
     );
 };
