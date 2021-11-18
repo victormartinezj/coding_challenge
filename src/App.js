@@ -1,7 +1,10 @@
 import DirectoryList from "ui/components/DirectoryList";
 
-const fetchOffersList = () => {
-    return [];
+const fetchOffersList = async () => {
+    const response = await fetch(
+        "http://universities.hipolabs.com/search?country=Mexico",
+    );
+    return await response.json();
 };
 
 export default function App() {
