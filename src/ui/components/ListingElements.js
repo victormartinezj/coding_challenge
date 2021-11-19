@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import usePagination from "../../customHooks/UsePagination";
+import PaginationComponent from "./PaginationComponent";
+import SearchBar from "./SearchBar";
+import UniversityCard from "./UniversityCard";
 
 const ListingElements = ({ universities }) => {
     const [currentUniversities, setCurrentUniversities] = useState(
@@ -13,7 +16,7 @@ const ListingElements = ({ universities }) => {
         maxPage,
         isLast,
         isFirst,
-    } = usePagination(currentUniversities, 10);
+    } = usePagination(currentUniversities, 12);
 
     console.log(currentPage);
     console.log(maxPage);
@@ -58,42 +61,28 @@ const ListingElements = ({ universities }) => {
 
     return (
         <div>
-            <div>
-                Search:{" "}
-                <input
-                    type="text"
-                    id="search-university"
-                    value={filterUniversities}
-                    onChange={e => setFilterUniversities(e.target.value)}
-                />
-                <div>
-                    <button
-                        onClick={() => {
-                            setSortingElements("order");
-                        }}>
-                        Order alphabetically
-                    </button>
-                </div>
-                <div>
-                    <button
-                        onClick={() => {
-                            setSortingElements("reverse");
-                        }}>
-                        Order reverse
-                    </button>
-                </div>
+            <SearchBar
+                filterUniversities={filterUniversities}
+                setFilterUniversities={setFilterUniversities}
+                sortingElements={sortingElements}
+                setSortingElements={setSortingElements}
+            />
+            <div className="px-4 grid grid-col-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 justify-items-center">
+                {currentData().map(university => (
+                    <UniversityCard
+                        key={university.name}
+                        university={university}
+                    />
+                ))}
             </div>
-            {currentData().map(university => (
-                <div key={university.name}>{university.name}</div>
-            ))}
-            <div>
-                Pagination{" "}
-                <div>
-                    {!isFirst() && <button onClick={() => prev()}>Prev</button>}
-                    <span>{`${currentPage} of ${maxPage}`}</span>
-                    {!isLast() && <button onClick={() => next()}>Next</button>}
-                </div>
-            </div>
+            <PaginationComponent
+                prev={prev}
+                next={next}
+                currentPage={currentPage}
+                maxPage={maxPage}
+                isFirst={isFirst}
+                isLast={isLast}
+            />
         </div>
     );
 };
