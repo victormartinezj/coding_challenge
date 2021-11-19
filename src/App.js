@@ -1,4 +1,5 @@
 import DirectoryList from "ui/components/DirectoryList";
+import data from "./ui/components/borrarData";
 
 const fetchOffersList = async () => {
     const response = await fetch(
@@ -12,7 +13,7 @@ export default function App() {
         <>
             <p class="py-4 text-lg text-center">Start here :) Good luck!</p>
 
-            <DirectoryList offerList={fetchOffersList()} />
+            <DirectoryList offerList={data} />
         </>
     );
 }

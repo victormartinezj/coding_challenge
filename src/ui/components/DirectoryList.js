@@ -28,7 +28,7 @@ export default function DirectoryList({ offerList, ...props }) {
 
     return (
         <>
-            <div class="">
+            <div class="container mx-auto max-w-5xl">
                 {data.loading && <div>Loading </div>}
                 {data.error && <div>Error</div>}
                 {!data.error && !data.loading && data.elements && (

@@ -14,7 +14,7 @@ const ListingElements = ({ universities }) => {
         maxPage,
         isLast,
         isFirst,
-    } = usePagination(currentUniversities, 10);
+    } = usePagination(currentUniversities, 12);
 
     console.log(currentPage);
     console.log(maxPage);
@@ -84,9 +84,14 @@ const ListingElements = ({ universities }) => {
                     </button>
                 </div>
             </div>
-            {currentData().map(university => (
-                <UniversityCard key={university.name} university={university} />
-            ))}
+            <div class="px-4 grid grid-col-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 justify-items-center">
+                {currentData().map(university => (
+                    <UniversityCard
+                        key={university.name}
+                        university={university}
+                    />
+                ))}
+            </div>
             <div>
                 Pagination{" "}
                 <div>
