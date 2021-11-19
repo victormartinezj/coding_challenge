@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import usePagination from "../../customHooks/UsePagination";
 import PaginationComponent from "./PaginationComponent";
+import SearchBar from "./SearchBar";
 import UniversityCard from "./UniversityCard";
 
 const ListingElements = ({ universities }) => {
@@ -60,42 +61,12 @@ const ListingElements = ({ universities }) => {
 
     return (
         <div>
-            <div className="bg-blue-700 p-4 rounded mb-6 flex justify-between items-center flex-wrap  text-white ">
-                <div>
-                    Search:{" "}
-                    <input
-                        className="rounded px-4 py-1 text-blue-600"
-                        type="text"
-                        id="search-university"
-                        value={filterUniversities}
-                        onChange={e => setFilterUniversities(e.target.value)}
-                    />
-                </div>
-                <div className="space-x-2 w-14 py-2">
-                    <button
-                        className={`rounded py-2 px-2 border border-gray-200 ${
-                            sortingElements === "order"
-                                ? "bg-white text-blue-600"
-                                : ""
-                        } `}
-                        onClick={() => {
-                            setSortingElements("order");
-                        }}>
-                        A-Z
-                    </button>
-                    <button
-                        className={`rounded py-2 px-2 border border-gray-200 ${
-                            sortingElements === "reverse"
-                                ? "bg-white text-blue-600"
-                                : ""
-                        } `}
-                        onClick={() => {
-                            setSortingElements("reverse");
-                        }}>
-                        Z-A
-                    </button>
-                </div>
-            </div>
+            <SearchBar
+                filterUniversities={filterUniversities}
+                setFilterUniversities={setFilterUniversities}
+                sortingElements={sortingElements}
+                setSortingElements={setSortingElements}
+            />
             <div className="px-4 grid grid-col-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 justify-items-center">
                 {currentData().map(university => (
                     <UniversityCard
