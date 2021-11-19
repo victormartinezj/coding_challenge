@@ -12,7 +12,6 @@ export default function DirectoryList({ offerList, ...props }) {
         (async () => {
             try {
                 const value = await offerList;
-                console.log(value);
                 setData(prev => ({
                     ...prev,
                     elements: [...value],
@@ -20,7 +19,6 @@ export default function DirectoryList({ offerList, ...props }) {
                 }));
             } catch (error) {
                 setData(prev => ({ ...prev, error: true, loading: false }));
-                console.log(error);
             }
         })();
     }, []);

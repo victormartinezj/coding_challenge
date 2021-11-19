@@ -9,7 +9,6 @@ API endpoint:
 
 http://universities.hipolabs.com/search?country=Mexico
 
-
 To get stated:
 
 ```{.bash}
@@ -91,7 +90,7 @@ Please read the following instructions carefully and if you have any questions p
 1.  Fork this repo
 2.  Using the canvas project, implement the following requirements:
 
--   Connect to the API (No authentication needed for this exercise) 
+-   Connect to the API (No authentication needed for this exercise)
 -   Perform a GET request to the directory and fetch the offer array
 -   Display the offers in a list using the data you have available from the API (get creative)
 -   Make it look cool. No design is provided but a nice UI is expected
@@ -113,3 +112,9 @@ Please read the following instructions carefully and if you have any questions p
 
 ## Any questions?
 
+I add the possibility to order alphabetically the universities, I make a sort iteration in the array to accomplish that,
+we can reverse order too, first I order the array with the function sort and then apply reverse to the array :D
+
+We can search the univiersities by name I make a regex and iterate the universities name with a filter function passing the regex.test to filter the elements.
+
+Thanks.

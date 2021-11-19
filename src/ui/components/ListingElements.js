@@ -18,12 +18,9 @@ const ListingElements = ({ universities }) => {
         isFirst,
     } = usePagination(currentUniversities, 12);
 
-    console.log(currentPage);
-    console.log(maxPage);
     const [filterUniversities, setFilterUniversities] = useState("");
     const [sortingElements, setSortingElements] = useState(null);
     useEffect(() => {
-        console.log(filterUniversities);
         setSortingElements(null);
         if (filterUniversities) {
             const regExpression = new RegExp(filterUniversities, "gi");
@@ -40,7 +37,6 @@ const ListingElements = ({ universities }) => {
     useEffect(() => {
         if (sortingElements) {
             (() => {
-                console.log([...currentUniversities]);
                 const tempOrder = [...currentUniversities].sort((a, b) => {
                     if (a.name > b.name) {
                         return 1;
