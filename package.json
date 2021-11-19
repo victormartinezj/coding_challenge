@@ -30,6 +30,7 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "recharts": "^1.8.5",
+        "spinners-react": "^1.0.6",
         "stylelint-scss": "^3.17.1"
     },
     "devDependencies": {

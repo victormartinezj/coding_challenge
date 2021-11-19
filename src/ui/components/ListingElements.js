@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import usePagination from "../../customHooks/UsePagination";
+import PaginationComponent from "./PaginationComponent";
 import UniversityCard from "./UniversityCard";
 
 const ListingElements = ({ universities }) => {
@@ -59,27 +60,35 @@ const ListingElements = ({ universities }) => {
 
     return (
         <div>
-            <div class="bg-blue-700 p-4 rounded mb-6 flex justify-between items-center flex-wrap  text-white ">
+            <div className="bg-blue-700 p-4 rounded mb-6 flex justify-between items-center flex-wrap  text-white ">
                 <div>
                     Search:{" "}
                     <input
-                        class="rounded px-4 py-1 text-blue-600"
+                        className="rounded px-4 py-1 text-blue-600"
                         type="text"
                         id="search-university"
                         value={filterUniversities}
                         onChange={e => setFilterUniversities(e.target.value)}
                     />
                 </div>
-                <div class="space-x-2 w-14 py-2">
+                <div className="space-x-2 w-14 py-2">
                     <button
-                        class="rounded py-2 px-2 border border-gray-200 "
+                        className={`rounded py-2 px-2 border border-gray-200 ${
+                            sortingElements === "order"
+                                ? "bg-white text-blue-600"
+                                : ""
+                        } `}
                         onClick={() => {
                             setSortingElements("order");
                         }}>
                         A-Z
                     </button>
                     <button
-                        class="rounded py-2 px-2 border border-gray-200 "
+                        className={`rounded py-2 px-2 border border-gray-200 ${
+                            sortingElements === "reverse"
+                                ? "bg-white text-blue-600"
+                                : ""
+                        } `}
                         onClick={() => {
                             setSortingElements("reverse");
                         }}>
@@ -87,7 +96,7 @@ const ListingElements = ({ universities }) => {
                     </button>
                 </div>
             </div>
-            <div class="px-4 grid grid-col-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 justify-items-center">
+            <div className="px-4 grid grid-col-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4 md:grid-cols-3 justify-items-center">
                 {currentData().map(university => (
                     <UniversityCard
                         key={university.name}
@@ -95,14 +104,14 @@ const ListingElements = ({ universities }) => {
                     />
                 ))}
             </div>
-            <div>
-                Pagination{" "}
-                <div>
-                    {!isFirst() && <button onClick={() => prev()}>Prev</button>}
-                    <span>{`${currentPage} of ${maxPage}`}</span>
-                    {!isLast() && <button onClick={() => next()}>Next</button>}
-                </div>
-            </div>
+            <PaginationComponent
+                prev={prev}
+                next={next}
+                currentPage={currentPage}
+                maxPage={maxPage}
+                isFirst={isFirst}
+                isLast={isLast}
+            />
         </div>
     );
 };
