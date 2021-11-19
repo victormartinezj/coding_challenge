@@ -54,7 +54,6 @@ export default function DirectoryList({ offerList, ...props }) {
                 )}
                 {!data.error && !data.loading && data.elements && (
                     <div>
-                        <div>Success</div>
                         <ListingElements universities={data.elements} />
                     </div>
                 )}

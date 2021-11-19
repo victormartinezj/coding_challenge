@@ -9,9 +9,7 @@ const fetchOffersList = async () => {
 
 export default function App() {
     return (
-        <div className="mb-10">
-            <p className="py-4 text-lg text-center">Start here :) Good luck!</p>
-
+        <div className="mb-10 md:mt-10">
             <DirectoryList offerList={fetchOffersList()} />
         </div>
     );

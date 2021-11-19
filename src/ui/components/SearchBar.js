@@ -5,7 +5,7 @@ const SearchBar = ({
     setSortingElements,
 }) => {
     return (
-        <div className="bg-blue-700 p-4 rounded mb-6 flex justify-between items-center flex-wrap  text-white ">
+        <div className="bg-blue-700 p-4 md:rounded mb-6 flex justify-between items-center flex-wrap  text-white ">
             <div>
                 Search:{" "}
                 <input
