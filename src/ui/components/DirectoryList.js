@@ -28,7 +28,7 @@ export default function DirectoryList({ offerList, ...props }) {
 
     return (
         <>
-            <div>
+            <div class="">
                 {data.loading && <div>Loading </div>}
                 {data.error && <div>Error</div>}
                 {!data.error && !data.loading && data.elements && (

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import usePagination from "../../customHooks/UsePagination";
+import UniversityCard from "./UniversityCard";
 
 const ListingElements = ({ universities }) => {
     const [currentUniversities, setCurrentUniversities] = useState(
@@ -84,7 +85,7 @@ const ListingElements = ({ universities }) => {
                 </div>
             </div>
             {currentData().map(university => (
-                <div key={university.name}>{university.name}</div>
+                <UniversityCard key={university.name} university={university} />
             ))}
             <div>
                 Pagination{" "}
